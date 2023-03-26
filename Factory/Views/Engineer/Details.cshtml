@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Factory.Models;
+@model Factory.Models.Engineer;
+
+<h1>Engineer Details</h1>
+<h3>@Html.DisplayNameFor(model => model.FirstName): @Html.DisplayFor(model => model.FirstName)<h3>
+<h3>@Html.DisplayNameFor(model => model.LastName): @Html.DisplayFor(model => model.LastName)<h3>
+
+
+@if(Model.EngineerMachineJoins.Count == 0)
+{
+  <h3>No machines have been added to this engineer's profile yet.</h3>
+}
+else
+{
+  <h3>Licenesed to service these machines:</h3>
+  <ol>
+    @foreach(EngineerMachineJoin engineerMachineJoin in Model.EngineerMachineJoins)
+    {
+      <li>@engineerMachineJoin.Machine.Name </li>
+    }
+  </ol>
+}
+<p>@Html.ActionLink("Add machine to engineer", "AddMachine", new { id = Model.EngineerId})</p>
