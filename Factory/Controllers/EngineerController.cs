@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq; 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+//test
 
 namespace Factory.Controllers
 {
@@ -64,6 +65,36 @@ namespace Factory.Controllers
         _db.SaveChanges();
       }
       return RedirectToAction("Details", new {id = engineer.EngineerId});
+    }
+
+    public ActionResult Edit (int id)
+    {
+      Engineer thisEngineer = _db.Engineers.FirstOrDefault(engineers =>engineers.EngineerId == id);
+      return View(thisEngineer);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Engineer engineer)
+    {
+      _db.Engineers.Update(engineer);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult Delete(int id)
+    {
+      Engineer thisEngineer = _db.Engineers.FirstOrDefault(engineers =>engineers.EngineerId == id);
+      return View(thisEngineer);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      Engineer thisEngineer = _db.Engineers.FirstOrDefault(engineers =>engineers.EngineerId == id);
+      _db.Engineers.Remove(thisEngineer);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+
     }
   }
 }

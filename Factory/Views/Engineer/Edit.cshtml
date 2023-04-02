@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<h4>Edit engineer</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.FirstName)
+  @Html.EditorFor(model => model.FirstName)
+  <br>
+  <br>
+  @Html.LabelFor(model => model.LastName)
+  @Html.EditorFor(model => model.LastName)
+  <br>
+  <br>
+  @Html.LabelFor(model => model.DateOfHire, "Date of hire")
+  @Html.EditorFor(model => model.DateOfHire, new {type="date"})
+  <br>
+  <br>
+  <input type="submit" value="Save"/>
+}
+<p>@Html.ActionLink("Show all engineers", "Index")</p>
