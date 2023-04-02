@@ -32,9 +32,16 @@ namespace Factory.Controllers
 
     public ActionResult Create(Engineer engineer)
     {
+      if (!ModelState.IsValid)
+      {
+        return View(engineer);
+      }
+      else
+      {
       _db.Engineers.Add(engineer);
       _db.SaveChanges();
       return RedirectToAction("Index");
+      }
     }
 
     public ActionResult Details(int id)

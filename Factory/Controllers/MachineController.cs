@@ -31,9 +31,16 @@ namespace Factory.Controllers
 
     public ActionResult Create(Machine machine)
     {
+      if (!ModelState.IsValid)
+      {
+        return View(machine);
+      }
+      else
+      {
       _db.Machines.Add(machine);
       _db.SaveChanges();
       return RedirectToAction("Index");
+      }
     }
 
     public ActionResult Details(int id)
