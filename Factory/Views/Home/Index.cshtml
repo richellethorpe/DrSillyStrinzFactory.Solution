@@ -34,7 +34,9 @@
         </ul>
       </div>
     </nav>
-      <h1>Here's what we've got </h1>
+      <BR>
+      <h1>VIEW OUR TEAM & EQUIPMENT</h1>
+      </BR>
 
       @using Factory.Models;
 
@@ -46,7 +48,7 @@
       <ul>
         @foreach (Engineer engineer in Model["engineers"])
         {
-          <li>@Html.ActionLink(@engineer.LastName, "Details", "Engineer", new{id = @engineer.EngineerId})</li>
+          <li>@Html.ActionLink(@engineer.FirstName, "Details", "Engineer", new{id = @engineer.EngineerId}) @Html.ActionLink(@engineer.LastName, "Details", "Engineer", new{id = @engineer.EngineerId})</li>
         }
       </ul>
 
