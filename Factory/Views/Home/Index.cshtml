@@ -34,9 +34,33 @@
         </ul>
       </div>
     </nav>
-      <h1>Dr. Silly Stringz Factory</h1>
-      <h2>@Html.ActionLink("Show all engineers", "Index", "Engineer")</h2>
-      <h2>@Html.ActionLink("Show all machines", "Index", "Machine")</h2>
+      <h1>Here's what we've got </h1>
+
+      @using Factory.Models;
+
+      <h4>Engineers</h4>
+      @if (Model["engineers"].Length == 0)
+      {
+          <p>No Engineers have been added yet!</p>
+      }
+      <ul>
+        @foreach (Engineer engineer in Model["engineers"])
+        {
+          <li>@Html.ActionLink(@engineer.LastName, "Details", "Engineer", new{id = @engineer.EngineerId})</li>
+        }
+      </ul>
+
+      <h4> Machines </h4>
+      @if (Model["machines"].Length == 0)
+      {
+        <p>No Machines have been added yet!</p>
+      }
+      <ul>
+          @foreach (Machine machine in Model["machines"])
+          {
+            <li>@Html.ActionLink(@machine.Name, "Details", "Machine", new{id = @machine.MachineId})</li>
+          }
+      </ul>
 
   </body>
 </html>
