@@ -5,6 +5,9 @@
 @model Factory.Models.Engineer
 
 <h4>Add a new engineer</h4>
+<p>@Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger", @style = "font-weight: 600;"})</p>
+<p>@Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger", @style = "font-weight: 600;"})</p>
+<p>@Html.ValidationMessageFor(model => model.DateOfHire, "", new { @class = "text-danger", @style = "font-weight: 600;"})</p>
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.FirstName)
