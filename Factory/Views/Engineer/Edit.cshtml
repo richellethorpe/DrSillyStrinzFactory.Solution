@@ -7,6 +7,8 @@
 <h4>Edit engineer</h4>
 @using (Html.BeginForm())
 {
+  @Html.HiddenFor(model => model.EngineerId)
+
   @Html.LabelFor(model => model.FirstName)
   @Html.EditorFor(model => model.FirstName)
   <br>
