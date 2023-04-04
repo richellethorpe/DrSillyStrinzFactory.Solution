@@ -14,9 +14,9 @@
 
 <ol>
   @foreach(Engineer engineer in Model)
+{
   {
- {
-    <li>@Html.ActionLink($"{engineer.FirstName}", "Details", new {id = engineer.EngineerId}) @Html.ActionLink($"{engineer.LastName}", "Details", new {id = engineer.EngineerId})| Date of Hire: @engineer.DateOfHire</li>
+    <li>@Html.ActionLink($"{engineer.FirstName} {engineer.LastName}", "Details", new {id = engineer.EngineerId})| Date of Hire: @engineer.DateOfHire</li>
 
   }
 }
